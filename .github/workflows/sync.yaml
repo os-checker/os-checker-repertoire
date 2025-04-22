@@ -1,0 +1,36 @@
+name: Sync submodules
+
+on:
+  push:
+  schedule:
+    - cron: '0 20 * * *'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    name: Sync submodules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - name: Set up git config
+        run: | 
+          git config --global user.name "zjp-CN[bot]"
+          git config --global user.email "zjp-CN[bot]@users.noreply.github.com"
+          git config --global committer.name "zjp-CN[bot]"
+          git config --global committer.email "zjp-CN[bot]@users.noreply.github.com"
+          git remote show origin
+
+      - name: Sync submodules
+        run: |
+          git submodule update --remote
+          echo "Submodules are succeessfully updated locally!"
+          git status
+          git add .
+          echo "Submitting：$(git status --porcelain)"
+          git commit -m "[bot] sync submodules"
+          echo "Commited!"
+          git push
+          echo "Pushed!🎇"
