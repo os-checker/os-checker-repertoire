@@ -24,8 +24,6 @@ jobs:
           git remote show origin
 
       - name: Sync submodules
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
           git submodule update --remote
           echo "Submodules are succeessfully updated locally!"
