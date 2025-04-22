@@ -10,8 +10,8 @@
 [submodule "plugin"]
 	path = plugin
 	url = git@github.com:os-checker/plugin.git
-[submodule "docs"]
-	path = docs
+[submodule "plugin-docs"]
+	path = plugin-docs
 	url = git@github.com:os-checker/docs.git
 [submodule "plugin-cargo"]
 	path = plugin-cargo
