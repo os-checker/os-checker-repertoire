@@ -30,7 +30,7 @@ jobs:
           git status
           git add .
           echo "Submitting：$(git status --porcelain)"
-          git commit -m "[bot] sync submodules"
+          git commit -m "[bot] sync submodules" || exit 0
           echo "Commited!"
           git push
           echo "Pushed!🎇"
